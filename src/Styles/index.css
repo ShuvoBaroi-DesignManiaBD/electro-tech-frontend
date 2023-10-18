@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        font-family: "Poppins", Sans-serif;
+        box-sizing: border-box
+      }
+}
+
+@layer components {
+    .primaryBtn {
+        @apply text-base text-white border-2 border-primary bg-primary hover:bg-secondary font-medium rounded-md px-6 py-2.5 
+    }
+
+    .secondaryBtn {
+        @apply  text-base text-headingColor bg-transparent font-medium rounded-md px-6 py-2.5  border-2 border-gray-300 hover:bg-primary hover:border-primary hover:text-white
+    }
+
+    .primaryHeading {
+        @apply text-[40px] font-bold;
+    }
+
+    .secondaryHeading {
+        @apply text-[24px] font-semibold;
+    }    
+    .textLg {
+        @apply text-[20px] font-semibold;
+    }
+    .text {
+        @apply text-[16px] text-[#0b0b0bb3];
+    }
+
+    .or-divider:after, .or-divider:before {
+  @apply content-["_"] inline-block align-middle w-[45%]  border-t-[#ccc] border-t border-solid;
+}
+/* Header Styles */
+.offCanvasLinkStyles {
+    @apply py-3 border-b-2 border-gray-300 hover:bg-primary hover:rounded-lg hover:text-white
+}
+.remove-arrow::-webkit-inner-spin-button,
+.remove-arrow::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.remove-arrow {
+    -moz-appearance: textfield;
+}
+}
+
