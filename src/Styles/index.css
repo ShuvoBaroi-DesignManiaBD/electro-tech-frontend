@@ -4,7 +4,7 @@
 
 @layer base {
     * {
-        font-family: "Poppins", Sans-serif;
+        font-family: "Inter", Sans-serif;
         box-sizing: border-box
       }
 }
@@ -36,16 +36,6 @@
   @apply content-["_"] inline-block align-middle w-[45%]  border-t-[#ccc] border-t border-solid;
 }
 /* Header Styles */
-.offCanvasLinkStyles {
-    @apply py-3 border-b-2 border-gray-300 hover:bg-primary hover:rounded-lg hover:text-white
-}
-.remove-arrow::-webkit-inner-spin-button,
-.remove-arrow::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-.remove-arrow {
-    -moz-appearance: textfield;
-}
+
 }
 
