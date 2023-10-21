@@ -29,7 +29,7 @@ const Home = () => {
             </section>
             {/* Brands section */}
             <section className="py-20" id="brands" >
-                <div className="container px-4 mx-auto lg:px-6 ">
+                <div className="max-w-screen-xl px-4 mx-auto lg:px-6 ">
                     <div className="mx-auto max-w-screen-md text-center md:text-left" data-aos="fade" data-aos-duration="3000">
                         <h2 className="mb-4 text-center text-4xl tracking-tight font-extrabold text-headingColor">
                             Featured Brands

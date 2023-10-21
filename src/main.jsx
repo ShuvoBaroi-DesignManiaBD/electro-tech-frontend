@@ -14,6 +14,8 @@ import MyCart from './Pages/MyCart';
 import AddProduct from './Pages/AddProduct';
 import Products from './Pages/Products';
 import SingleBrand from './Pages/SingleBrand';
+import ProductDetails from './Pages/ProductDetails';
+import UpdateProduct from './Pages/UpdateProduct';
 
 const routes = createBrowserRouter([
   {
@@ -29,11 +31,16 @@ const routes = createBrowserRouter([
       {
         path: 'brands/:name',
         element: <SingleBrand></SingleBrand>,
-        loader: ({params}) => fetch(`https://electro-tech-backend.vercel.app/${params.name}`)
+        loader: ({ params }) => fetch(`https://electro-tech-backend.vercel.app/${params.name}`),
       },
       {
         path: '/products',
         element: <Products></Products>,
+      },
+      {
+        path: '/products/:product',
+        element: <ProductDetails></ProductDetails>,
+        loader: ({ params }) => fetch(`https://electro-tech-backend.vercel.app/${params.name}`),
       },
       {
         path: '/my-products',
@@ -46,6 +53,11 @@ const routes = createBrowserRouter([
       {
         path: '/add-product',
         element: <AddProduct></AddProduct>,
+      },
+      {
+        path: 'update-product/:id',
+        element: <UpdateProduct></UpdateProduct>,
+        loader: ({ params }) => fetch(`http://localhost:3000/products/${params.id}`),
       },
       {
         path: '/login',

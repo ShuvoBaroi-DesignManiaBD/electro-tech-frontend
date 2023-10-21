@@ -1,10 +1,14 @@
 import { useState } from "react";
 import HeroInnerPages from "../Components/Hero/HeroInnerPages";
 import { useAuth } from "../Hooks/useAuth";
+import { useLoaderData } from "react-router-dom";
 
-const AddProduct = () => {
+const UpdateProduct = () => {
   const {user} = useAuth();
-  console.log(user);
+  const product = useLoaderData();
+  // const [desValue, setDesValue] = useState('');
+  // console.log(desValue);
+  console.log(user, product);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -16,10 +20,10 @@ const AddProduct = () => {
     const type = form.type.value;
     const image = form.image.value;
     const short_description = form.description.value;
-
     const data = {userId, productName, price, brand, rating, type, image, short_description};
-    fetch(`http://localhost:3000/add-product`,{
-      method: 'POST',
+    // console.log(desValue);
+    fetch(`http://localhost:3000/update-product/${product._id}`,{
+      method: 'PUT',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data)
     })
@@ -30,14 +34,14 @@ const AddProduct = () => {
   return (
     <>
       <HeroInnerPages>
-        Add product
+        {product.productName}
       </HeroInnerPages>
       <section className="bg-white">
         <div className="container py-8 px-4 mx-auto lg:py-16 lg:px-6 ">
           <section className="bg-white dark:bg-gray-900">
             <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
               <h2 className="mb-4 secondaryHeading text-center font-bold text-gray-900 dark:text-white">
-                Add a new product
+                Update {product.productName}
               </h2>
               <form onSubmit={handleSubmit}>
                 <div className="grid gap-4 sm:grid-cols-3 sm:gap-6">
@@ -52,6 +56,7 @@ const AddProduct = () => {
                       type="text"
                       name="productName"
                       id="name"
+                      defaultValue={product.productName}
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                       placeholder="Type product name"
                       required
@@ -68,6 +73,7 @@ const AddProduct = () => {
                     <input
                       type="number"
                       name="price"
+                      defaultValue={product.price}
                       id="price"
                       step=".01"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
@@ -86,6 +92,7 @@ const AddProduct = () => {
                     <select
                       name="brand"
                       id="Brand"
+                      defaultValue={product.brand}
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                       placeholder="Select brand"
                       required
@@ -108,6 +115,7 @@ const AddProduct = () => {
                     </label>
                     <input type="number" maxLength={1} min={0} max={5} step=".1"
                     name="rating"
+                    defaultValue={product.rating}
                     id="name"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Type product name"
@@ -123,6 +131,7 @@ const AddProduct = () => {
                     </label>
                     <select
                       name="type"
+                      defaultValue={product.type}
                       id="type"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                       required
@@ -148,6 +157,7 @@ const AddProduct = () => {
                     <input
                       type="url"
                       name="image"
+                      defaultValue={product.image}
                       id="image"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                       placeholder="ex. https://image.com"
@@ -163,6 +173,9 @@ const AddProduct = () => {
                     </label>
                     <textarea
                       name="description"
+                      defaultValue={product.short_description}
+                      // value={desValue}
+                      // onChange={e =>setDesValue(e.target.value)}
                       id="description"
                       rows={8}
                       className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
@@ -175,7 +188,7 @@ const AddProduct = () => {
                   type="submit"
                   className="primaryBtn mt-5"
                 >
-                  Add product
+                  Update product
                 </button>
               </form>
             </div>
@@ -187,4 +200,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default UpdateProduct;
