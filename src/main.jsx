@@ -13,6 +13,7 @@ import MyProducts from './Pages/MyProducts';
 import MyCart from './Pages/MyCart';
 import AddProduct from './Pages/AddProduct';
 import Products from './Pages/Products';
+import SingleBrand from './Pages/SingleBrand';
 
 const routes = createBrowserRouter([
   {
@@ -23,6 +24,12 @@ const routes = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
+        loader: () => fetch("https://electro-tech-backend.vercel.app/brands")
+      },
+      {
+        path: 'brands/:name',
+        element: <SingleBrand></SingleBrand>,
+        loader: ({params}) => fetch(`https://electro-tech-backend.vercel.app/${params.name}`)
       },
       {
         path: '/products',

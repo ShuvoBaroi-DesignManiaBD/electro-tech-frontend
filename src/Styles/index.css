@@ -35,6 +35,9 @@
     .or-divider:after, .or-divider:before {
   @apply content-["_"] inline-block align-middle w-[45%]  border-t-[#ccc] border-t border-solid;
 }
+.awssld__content {
+    border-radius: 12px !important;
+}
 /* Header Styles */
 
 }

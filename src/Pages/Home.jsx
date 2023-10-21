@@ -1,7 +1,10 @@
 
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import BrandCard from "../Components/Cards/BrandCard";
 
 const Home = () => {
+    const brands = useLoaderData();
+    // console.log(brands);
     return (
         <>
             {/* Hero section */}
@@ -36,7 +39,7 @@ const Home = () => {
                         </p>
                     </div>
                     <div className="grid gap-8 mt-10 md:grid-cols-2 lg:grid-cols-3" data-aos="fade-up" data-aos-duration="5000">
-
+                        {brands?.map(brand => <BrandCard key={brand._id} brand={brand}></BrandCard>)}
                     </div>
                 </div>
             </section>
