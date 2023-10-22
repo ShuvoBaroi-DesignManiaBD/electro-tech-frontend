@@ -38,9 +38,9 @@ const routes = createBrowserRouter([
         element: <Products></Products>,
       },
       {
-        path: '/products/:product',
+        path: '/products/:id',
         element: <ProductDetails></ProductDetails>,
-        loader: ({ params }) => fetch(`https://electro-tech-backend.vercel.app/${params.name}`),
+        loader: ({ params }) => fetch(`https://electro-tech-backend.vercel.app/${params.id}`),
       },
       {
         path: '/my-products',
@@ -57,7 +57,7 @@ const routes = createBrowserRouter([
       {
         path: 'update-product/:id',
         element: <UpdateProduct></UpdateProduct>,
-        loader: ({ params }) => fetch(`http://localhost:3000/products/${params.id}`),
+        loader: ({ params }) => fetch(`https://electro-tech-backend.vercel.app/products/${params.id}`),
       },
       {
         path: '/login',

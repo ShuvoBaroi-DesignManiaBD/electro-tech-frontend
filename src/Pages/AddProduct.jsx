@@ -18,7 +18,7 @@ const AddProduct = () => {
     const short_description = form.description.value;
 
     const data = {userId, productName, price, brand, rating, type, image, short_description};
-    fetch(`http://localhost:3000/add-product`,{
+    fetch(`https://electro-tech-backend.vercel.app/add-product`,{
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data)

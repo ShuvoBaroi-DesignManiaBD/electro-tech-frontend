@@ -22,7 +22,7 @@ const UpdateProduct = () => {
     const short_description = form.description.value;
     const data = {userId, productName, price, brand, rating, type, image, short_description};
     // console.log(desValue);
-    fetch(`http://localhost:3000/update-product/${product._id}`,{
+    fetch(`https://electro-tech-backend.vercel.app/update-product/${product._id}`,{
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data)
