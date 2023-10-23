@@ -2,15 +2,34 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Rating } from "@material-tailwind/react";
 import ReactStarsRating from 'react-awesome-stars-rating'
+import { getCartItems } from "../../Hooks/useData";
+import { useAuth } from "../../Hooks/useAuth";
 
 const ProductCard = (props) => {
+    const {user} = useAuth();
     const productData = props.productData;
-    console.log(productData, productData?.rating, productData?._id);
+    console.log(productData);
     const navigate = useNavigate();
-    const path = productData?.productName?.toLowerCase().replaceAll(" ", "-");
+    // const path = productData?.productName?.toLowerCase().replaceAll(" ", "-");
 
     const handleDelete = () => {
-        fetch(``)
+        fetch(`http://localhost:3000/deleteProduct`, {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(productData)
+          })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data)
+            const getProducts = async () => {
+                const data = await getCartItems(user.uid);
+                props.setcartItems(data);
+                console.log(data);        
+            }
+            getProducts();
+        })
+          // console.log(data);
+
     }
     return (
         <div className={`flex flex-col items-stretch justify-between border-2 rounded-xl`}>
