@@ -1,20 +1,23 @@
 import { useLoaderData, useLocation } from "react-router-dom";
 import ReactStarsRating from 'react-awesome-stars-rating'
 import HeroInnerPages from "../Components/Hero/HeroInnerPages";
+import { useAuth } from "../Hooks/useAuth";
 
 const ProductDetails = () => {
     // const currentBrand = location?.state;
     const location = useLocation();
     const product = location.state;
-    console.log(product);
+    const {user} = useAuth();
+    console.log(user);
 
     const handleAddToCart = () => {
-        const id = product.id;
-        const data = {id, product}
-        fetch(`http://localhost:3000/add-to-cart`,{
+        const id = user.uid;
+        console.log(product);
+        const data = {id, product};
+        fetch(`https://electro-tech-backend.vercel.app/add-to-cart`,{
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(product)
+      body: JSON.stringify(data)
     })
     .then(res => res.json())
     .then(dataa => console.log(dataa))

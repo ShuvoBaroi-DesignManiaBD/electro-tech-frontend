@@ -15,3 +15,11 @@ export const getProductById = async (id) => {
     console.log(data);
     return data;
 }
+
+export const getCartItems = async (id) => {
+    // let products = [];
+    const res = await fetch(`https://electro-tech-backend.vercel.app/cartItems/${id}`);
+    const data = await res.json();
+    console.log(data.items);
+    return data.items;
+}

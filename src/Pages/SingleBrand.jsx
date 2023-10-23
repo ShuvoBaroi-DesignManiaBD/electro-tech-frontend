@@ -13,7 +13,7 @@ const SingleBrand = () => {
     // const products = getProductsOfBrand(currentBrand.name);
     console.log(currentBrand, products);
     const slider = (
-        <AwesomeSlider animation="cubeAnimation" className="h-[600px] rounded-xl cover">
+        <AwesomeSlider animation="cubeAnimation" className="lg:h-[600px] rounded-xl cover">
             {currentBrand.adsImages.map(ad => <div key={ad.indexOf()} data-src={ad} />)}
             {/* <div data-src="/path/to/image-0.png" />
           <div data-src="/path/to/image-1.png" />
@@ -34,15 +34,15 @@ const SingleBrand = () => {
         <HeroInnerPages>
         {currentBrand.name}
       </HeroInnerPages>
-        <div className="py-10 pb-40">
+        <div className="md:py-10 lg:py-10">
             <section className="bannerArea container mx-auto">
                 {slider}
             </section>
-            <section className='container mx-auto py-[120px] text-center'>
+            <section className='container mx-auto pt-[120px] pb-20 text-center'>
                 <h2 className='primaryHeading'>Products</h2>
-                <div className='gap-10 grid grid-cols-4 py-10'>
+                <div className='gap-10 grid md:grid-cols-2 lg:grid-cols-4 px-4 lg:px-0 py-10'>
                     {/* {currentBrand.products.map(product => <ProductCard key={Date.now()+Math.random()} productData={product}></ProductCard>)} */}
-                    {products.length>0?products.map(product => <ProductCard key={product._id} productData={product}></ProductCard>):
+                    {products.length>0?products.map(product => <ProductCard key={product._id} productData={product} method={"update"}></ProductCard>):
                     <p className='text-center textLg font-normal text-textColor col-span-4'>No products found. New products will add soon....</p>}
                 </div>
             </section>
