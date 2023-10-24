@@ -1,6 +1,7 @@
 import { useState } from "react";
 import HeroInnerPages from "../Components/Hero/HeroInnerPages";
 import { useAuth } from "../Hooks/useAuth";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddProduct = () => {
   const {user} = useAuth();
@@ -24,7 +25,7 @@ const AddProduct = () => {
       body: JSON.stringify(data)
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(toast.success("Product added successfully!") && form.reset())
     // console.log(data);
   }
   return (
@@ -183,6 +184,7 @@ const AddProduct = () => {
 
         </div>
       </section>
+      <ToastContainer />
     </>
   );
 };

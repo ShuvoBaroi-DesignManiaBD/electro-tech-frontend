@@ -2,6 +2,7 @@ import { useState } from "react";
 import HeroInnerPages from "../Components/Hero/HeroInnerPages";
 import { useAuth } from "../Hooks/useAuth";
 import { useLoaderData } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const UpdateProduct = () => {
   const {user} = useAuth();
@@ -28,7 +29,7 @@ const UpdateProduct = () => {
       body: JSON.stringify(data)
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(toast.success("Product updated successfully!"))
     // console.log(data);
   }
   return (
@@ -196,6 +197,7 @@ const UpdateProduct = () => {
 
         </div>
       </section>
+      <ToastContainer></ToastContainer>
     </>
   );
 };

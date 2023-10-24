@@ -3,6 +3,7 @@ import HeroInnerPages from "../Components/Hero/HeroInnerPages";
 import { useAuth } from "../Hooks/useAuth";
 import ProductCard from "../Components/Cards/ProductCard";
 import { getCartItems } from "../Hooks/useData";
+import { Spinner } from "@material-tailwind/react";
 
 const MyCart = () => {
     const { user } = useAuth();
@@ -12,8 +13,8 @@ const MyCart = () => {
     useEffect(() => {
         const getProducts = async () => {
             const data = await getCartItems(user.uid);
-            setcartItems(data);
-            console.log(data);        
+            data.length !== 0 ? setcartItems(data) : setcartItems(null);
+            console.log(data);
         }
         getProducts();
     }, [user.uid]);
@@ -27,8 +28,26 @@ const MyCart = () => {
                 <h2 className='primaryHeading'>Products</h2>
                 <div className='gap-10 grid md:grid-cols-2 lg:grid-cols-4 px-4 lg:px-0 py-10'>
                     {/* {currentBrand.products.map(product => <ProductCard key={Date.now()+Math.random()} productData={product}></ProductCard>)} */}
-                    {cartItems?.length > 0 ? cartItems.map(product => <ProductCard key={product._id} setcartItems={setcartItems} productData={product} method={"delete"}></ProductCard>) :
-                        <p className='text-center textLg font-normal text-textColor col-span-4'>Your cart is empty!</p>}
+                    {cartItems !== null ? (
+                        cartItems.length === 0 ? (
+                            <Spinner color="blue" className="h-8 w-8 col-span-4 mx-auto" />
+                        ) : (
+                            cartItems.map((product) => (
+                                <ProductCard
+                                    key={product._id}
+                                    cartItems={cartItems}
+                                    setcartItems={setcartItems}
+                                    productData={product}
+                                    method={"delete"}
+                                ></ProductCard>
+                            ))
+                        )
+                    ) : (
+                        <p className='text-center textLg font-normal text-textColor col-span-4'>
+                            Your cart is empty!
+                        </p>
+                    )}
+
                 </div>
             </section>
         </>

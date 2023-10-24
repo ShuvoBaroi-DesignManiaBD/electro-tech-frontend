@@ -13,7 +13,7 @@ const ProductCard = (props) => {
     // const path = productData?.productName?.toLowerCase().replaceAll(" ", "-");
 
     const handleDelete = () => {
-        fetch(`http://localhost:3000/deleteProduct`, {
+        fetch(`https://electro-tech-backend.vercel.app/deleteProduct`, {
             method: 'DELETE',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(productData)
@@ -22,9 +22,11 @@ const ProductCard = (props) => {
           .then(data => {
             console.log(data)
             const getProducts = async () => {
-                const data = await getCartItems(user.uid);
-                props.setcartItems(data);
-                console.log(data);        
+                // const data = await getCartItems(user.uid);
+                const oldCartItems = props.cartItems;
+                const newCartItems = oldCartItems.filter(item => item._id !== productData._id);
+                props.setcartItems(newCartItems.length === 0? null: newCartItems);
+                console.log(newCartItems);        
             }
             getProducts();
         })

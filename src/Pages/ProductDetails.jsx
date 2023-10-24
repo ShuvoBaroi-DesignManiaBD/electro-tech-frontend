@@ -2,6 +2,7 @@ import { useLoaderData, useLocation } from "react-router-dom";
 import ReactStarsRating from 'react-awesome-stars-rating'
 import HeroInnerPages from "../Components/Hero/HeroInnerPages";
 import { useAuth } from "../Hooks/useAuth";
+import { ToastContainer, toast } from "react-toastify";
 
 const ProductDetails = () => {
     // const currentBrand = location?.state;
@@ -20,7 +21,7 @@ const ProductDetails = () => {
       body: JSON.stringify(data)
     })
     .then(res => res.json())
-    .then(dataa => console.log(dataa))
+    .then(toast.success("Product added to cart!"));
     // console.log(data);
   }
     return (
@@ -39,8 +40,9 @@ const ProductDetails = () => {
                         <p className="text font-bold">Product type:  <span className="text-sm px-4 py-1 bg-primary text-white rounded-sm">{product?.type}</span></p>
                         <p className="text mt-3">{product.short_description}</p>
                         <p className="secondaryHeading mt-3">${product.price}</p>
-                        <button className="primaryBtn" onClick={handleAddToCart}>Add to cart</button>
+                        <button className="primaryBtn" onClick={handleAddToCart}>Add to cart</button>            
                     </div>
+                    <ToastContainer />
                 </div>
             </div>
         </>
