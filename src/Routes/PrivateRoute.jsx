@@ -10,7 +10,7 @@ const PrivateRoute = ({children}) => {
         // return children
         return (
             <>
-                <Outlet></Outlet>
+                <Outlet className="min-h-screen"></Outlet>
                 {children}
             </>
         );

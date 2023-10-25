@@ -27,13 +27,16 @@ const MyCart = () => {
             <HeroInnerPages>
                 My cart
             </HeroInnerPages>
-            <section className='container mx-auto pt-20 lg:pt-[120px] pb-20 text-center'>
+            <section className='min-h-[70vh] container mx-auto pt-20 lg:pt-[120px] pb-20 text-center'>
                 <h2 className='primaryHeading'>Products</h2>
                 <div className='gap-10 grid md:grid-cols-2 lg:grid-cols-4 px-4 lg:px-0 py-10'>
                     {/* {currentBrand.products.map(product => <ProductCard key={Date.now()+Math.random()} productData={product}></ProductCard>)} */}
                     {cartItems !== null ? (
                         cartItems.length === 0 ? (
-                            <Spinner color="blue" className="h-8 w-8 col-span-4 mx-auto" />
+                            // <Spinner color="blue" className="h-8 w-8 col-span-4 mx-auto" />
+                            <p className='text-center textLg font-normal text-textColor col-span-4'>
+                            Your cart is empty!
+                        </p>
                         ) : (
                             cartItems.map((product) => (
                                 <ProductCard

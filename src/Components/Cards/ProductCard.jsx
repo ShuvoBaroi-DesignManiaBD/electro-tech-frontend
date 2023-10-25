@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 const ProductCard = (props) => {
     const {user} = useAuth();
     const productData = props.productData;
+    const id = user.uid;
     console.log(productData, props);
     const navigate = useNavigate();
     // const path = productData?.productName?.toLowerCase().replaceAll(" ", "-");
@@ -38,7 +39,7 @@ const ProductCard = (props) => {
     }
 
     const handleDeleteFromCart = () => {
-        fetch(`https://electro-tech-backend.vercel.app/deleteProduct`, {
+        fetch(`http://localhost:3000/deleteProduct`, {
             method: 'DELETE',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(productData)
@@ -80,7 +81,7 @@ const ProductCard = (props) => {
                     >Update</button>}
                     {props.method === "delete" && <button className="primaryBtn bg-red-900 border-red-900 hover:bg-red-700 hover:border-red-700 px-0 text-sm py-2 w-full" 
                     onClick={handleDeleteFromCart}
-                    >Delete</button>}
+                    >Delete from cart</button>}
                     {props.deleteFromProducts && <button className="primaryBtn bg-red-900 border-red-900 hover:bg-red-700 hover:border-red-700 px-0 text-sm py-2 w-full" 
                     onClick={handleDeleteProduct}
                     >Delete</button>}

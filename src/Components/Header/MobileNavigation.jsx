@@ -20,7 +20,7 @@ const MobileNavigation = () => {
             <NavLink to="/" className={activeStatus}>
                 Home
             </NavLink>
-            <NavLink to="/products" className={`font-medium ${activeStatus}`}>
+            <NavLink to="/products" className={activeStatus}>
                 Products
             </NavLink>
             <NavLink to="/my-products" className={activeStatus}>

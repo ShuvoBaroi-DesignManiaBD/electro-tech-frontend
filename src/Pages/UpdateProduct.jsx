@@ -123,7 +123,7 @@ const UpdateProduct = () => {
                     required
                     />
                   </div>
-                  <div>
+                  <div className="w-full col-span-2 md:col-span-1">
                     <label
                       htmlFor="type"
                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -148,7 +148,7 @@ const UpdateProduct = () => {
                       <option value="Chromecast">Chromecast</option>
                     </select>
                   </div>
-                  <div className="col-span-2">
+                  <div className="col-span-3 sm:col-span-2">
                     <label
                       htmlFor="item-weight"
                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -165,7 +165,7 @@ const UpdateProduct = () => {
                       required
                     />
                   </div>
-                  <div className="sm:col-span-3">
+                  <div className="col-span-3 ">
                     <label
                       htmlFor="description"
                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"

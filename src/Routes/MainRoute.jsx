@@ -16,7 +16,7 @@ const MainRoute = () => {
     } else {
         return <>
             <Header></Header>
-            <Outlet></Outlet>
+            <Outlet className="min-h-screen"></Outlet>
             <Footer></Footer>
         </>
     }

@@ -14,7 +14,7 @@ const Footer = () => {
     }, [theme])
     
     return (
-        <footer className="border-t bg-[#f2f7ff] dark:bg-gray-800">
+        <footer className="border-t bg-[#ececec] dark:bg-gray-800">
             <div className="w-full container mx-auto p-4 md:pt-8">
                 <div className="flex flex-col gap-5 items-center justify-between mx-auto py-4">
                     <img src={mode === 'light'? "https://i.ibb.co/K5GvwL4/logo.webp" : 'https://i.ibb.co/TWsN5hW/logo-dark.webp'} alt="logo" className="w-[250px] cursor-pointer mt-5" onClick={() => navigate("/")} />

@@ -14,17 +14,17 @@ const Register = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         console.log(email.password);
-        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[_.!@$*=?#-])[A-Za-z\d_.!@$*=?#-]{8,24}$/;
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[_.!@$*=?#-])[A-Za-z\d_.!@$*=?#-]{6,24}$/;
 
-        if (!regex.test(password)) {
+        if (regex.test(password)) {
+            createUserWithEmail(email, password) && navigate("/");
+            e.target.reset();
+        } else {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops!',
                 text: 'Your password must have one uppercase, lowercase & special character!',
             })
-        } else {
-            createUserWithEmail(email, password) && navigate("/");
-            e.target.reset();
         }
     }
     const togglePass = () => {
@@ -84,7 +84,7 @@ const Register = () => {
                                 <input
                                     type={showPassword ? 'text' : 'password'}
                                     name="password"
-                                    minLength="8"
+                                    minLength="6"
                                     id="password"
                                     placeholder="••••••••"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 placeholder-gray-400"

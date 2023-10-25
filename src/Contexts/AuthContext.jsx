@@ -52,7 +52,8 @@ export const AuthProvider = ({ children }) => {
                     icon: 'success',
                     title: 'Success!!!',
                     text: 'You have successfully logged in',
-                })
+                });
+                
             })
             .catch((error) => {
                 console.error(error);

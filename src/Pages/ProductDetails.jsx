@@ -29,18 +29,18 @@ const ProductDetails = () => {
             <HeroInnerPages>
                 {product.productName}
             </HeroInnerPages>
-            <div className="bg-[#F5F8FF] py-20" >
-                <div className="flex justify-center gap-20 max-w-screen-lg p-10 py-20 rounded-xl mx-auto bg-white">
+            <div className="bg-[#F5F8FF] lg:py-20 py-10 px-4" >
+                <div className="flex flex-col lg:flex-row justify-center items-center gap-10 md:max-w-screen-md lg:max-w-screen-xl p-5 md:py-10 md:p-10 lg:py-20 rounded-xl mx-auto bg-white">
                     <img src={product.image} alt={product.productName}
-                        className="w-[40%]"
+                        className="w-full md:w-1/2"
                     />
-                    <div className="flex flex-col justify-center items-start gap-4">
+                    <div className="w-full lg:w-1/2 flex flex-col justify-center items-start gap-4">
                         <h2 className="primaryHeading text-3xl">{product.productName}</h2>
                         <ReactStarsRating size="18" starGap="2px" value={product?.rating} className="flex" />
                         <p className="text font-bold">Product type:  <span className="text-sm px-4 py-1 bg-primary text-white rounded-sm">{product?.type}</span></p>
                         <p className="text mt-3">{product.short_description}</p>
                         <p className="secondaryHeading mt-3">${product.price}</p>
-                        <button className="primaryBtn" onClick={handleAddToCart}>Add to cart</button>            
+                        <button className="primaryBtn w-full md:w-auto" onClick={handleAddToCart}>Add to cart</button>            
                     </div>
                     <ToastContainer />
                 </div>
