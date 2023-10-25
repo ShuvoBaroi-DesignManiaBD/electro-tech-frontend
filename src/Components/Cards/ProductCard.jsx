@@ -67,10 +67,10 @@ const ProductCard = (props) => {
                 <p className="absolute p-2 bg-secondary text-white rounded-tl-lg bottom-0 right-0">{productData?.brand}</p>
             </div>
             <div className="p-5 flex flex-col justify-start gap-2">
-                <h3 className="text font-bold text-start">{productData?.productName}</h3>
+                <h3 className="text font-bold text-start dark:text-white">{productData?.productName}</h3>
                 <ReactStarsRating size="18" starGap="2px" value={productData?.rating} className="flex"/>
-                <div className="flex gap-3 justify-between text-sm font-medium items-start  h-full py-3">
-                    <p className="px-2 py-1 bg-primaryLight rounded-sm">{productData?.type}</p>
+                <div className="flex gap-3 justify-between text-sm font-medium items-start  h-full py-3 dark:text-white">
+                    <p className="px-2 py-1 bg-primaryLight dark:bg-gray-700 rounded-sm">{productData?.type}</p>
                     <p>$ {productData?.price}</p>
                 </div>
                 <div className="flex gap-5 ">

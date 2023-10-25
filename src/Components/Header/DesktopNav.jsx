@@ -5,14 +5,14 @@ import { FaPlus } from "react-icons/fa";
 
 const DesktopNav = () => {
     const { user, logout } = useAuth();
-    const activeStatus = ({ isActive }) => (isActive ? "text font-medium text-primary" : "text font-medium");
+    const activeStatus = ({ isActive, isPending }) => (isActive ? "text font-medium text-primary dark:text-primary " : "text dark:text-white font-medium");
     return (
-        <ul className="flex p-10 lg:p-0 flex-col gap-5 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+        <ul className="flex p-10 lg:p-0 flex-col gap-5 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 bg-transparent">
 
-            <NavLink to="/" className={`font-medium ${activeStatus}`}>
+            <NavLink to="/" className={activeStatus}>
                 Home
             </NavLink>
-            <NavLink to="/products" className={`font-medium ${activeStatus}`}>
+            <NavLink to="/products" className={activeStatus}>
                 Products
             </NavLink>
             <NavLink to="/my-products" className={activeStatus}>

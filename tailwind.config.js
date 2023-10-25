@@ -9,6 +9,8 @@ module.exports = withMT({
   ],
   theme: {
     extend: {
+      darkMode: 'class',
+      dark: 'class',
       colors: {
         'primary': '#0D6EFD',
         'primaryLight': '#EBF3FF',

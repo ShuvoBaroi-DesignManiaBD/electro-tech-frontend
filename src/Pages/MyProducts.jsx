@@ -23,7 +23,7 @@ const MyProducts = () => {
     return (
         <>
             <HeroInnerPages>
-                My cart
+                My products
             </HeroInnerPages>
             <section className='container mx-auto pt-20 lg:pt-[120px] pb-20 text-center'>
                 <h2 className='primaryHeading'>Products</h2>
