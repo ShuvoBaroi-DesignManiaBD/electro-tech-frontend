@@ -39,7 +39,7 @@ const ProductCard = (props) => {
     }
 
     const handleDeleteFromCart = () => {
-        fetch(`http://localhost:3000/deleteProduct`, {
+        fetch(`https://electro-tech-backend.vercel.app/deleteProduct`, {
             method: 'DELETE',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(productData)
