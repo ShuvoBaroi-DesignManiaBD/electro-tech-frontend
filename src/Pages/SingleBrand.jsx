@@ -25,7 +25,8 @@ const SingleBrand = () => {
     useEffect(() => {
         const getProducts = async () => {
             const data = await getProductsOfBrand(currentBrand.name);
-            setProducts(data);
+            // setProducts(data);
+            data.length !== 0 ? setProducts(data) : setProducts(null);
         }
         getProducts()
     },[currentBrand.name])
@@ -43,8 +44,19 @@ const SingleBrand = () => {
                 <h2 className='primaryHeading'>Products</h2>
                 <div className='gap-10 grid md:grid-cols-2 lg:grid-cols-4 px-4 lg:px-0 pt-10'>
                     {/* {currentBrand.products.map(product => <ProductCard key={Date.now()+Math.random()} productData={product}></ProductCard>)} */}
-                    {products.length>0?products.map(product => <ProductCard key={product._id} productData={product} method={"update"}></ProductCard>):
-                    <Spinner color="blue" className="h-8 w-8 col-span-4 mx-auto" /> || <p className='text-center textLg font-normal text-textColor col-span-4'>No products found. New products will add soon....</p>}
+                    {/* {products.length>0?products.map(product => <ProductCard key={product._id} productData={product} method={"update"}></ProductCard>):
+                    <Spinner color="blue" className="h-8 w-8 col-span-4 mx-auto" /> || <p className='text-center textLg font-normal text-textColor col-span-4'>No products found. New products will add soon....</p>} */}
+                    {products !== null ? (
+                        products.length === 0 ? (
+                            <Spinner color="blue" className="h-8 w-8 col-span-4 mx-auto" />
+                        ) : (
+                            products.map((product) => (
+                                <ProductCard key={product._id} productData={product} method={"update"}></ProductCard>
+                            ))
+                        )
+                    ) : (
+                        <p className='text-center textLg font-normal text-textColor col-span-4'>No products found. New products will add soon....</p>
+                    )}
                 </div>
             </section>
         </div>

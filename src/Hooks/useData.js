@@ -14,6 +14,14 @@ export const getAllProducts= async () => {
     return data;
 }
 
+
+export const getProductsOfUser = async (id) => {
+    const res = await fetch(`https://electro-tech-backend.vercel.app/products/user/${id}`);
+    const data = await res.json();
+    console.log(data);
+    return data;
+}
+
 export const getProductById = async (id) => {
     const res = await fetch(`https://electro-tech-backend.vercel.app/products/${id}`);
     const data = await res.json();

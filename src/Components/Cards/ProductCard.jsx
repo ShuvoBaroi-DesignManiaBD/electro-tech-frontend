@@ -4,15 +4,40 @@ import { Rating } from "@material-tailwind/react";
 import ReactStarsRating from 'react-awesome-stars-rating'
 import { getCartItems } from "../../Hooks/useData";
 import { useAuth } from "../../Hooks/useAuth";
+import { ToastContainer, toast } from "react-toastify";
 
 const ProductCard = (props) => {
     const {user} = useAuth();
     const productData = props.productData;
-    console.log(productData);
+    console.log(productData, props);
     const navigate = useNavigate();
     // const path = productData?.productName?.toLowerCase().replaceAll(" ", "-");
+    
+    const handleDeleteProduct = () => {
+        fetch(`https://electro-tech-backend.vercel.app/product/delete`, {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(productData)
+          })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data)
+            const getProducts = async () => {
+                // const data = await getCartItems(user.uid);
+                const oldProducts = props.products;
+                const currentProducts = oldProducts.filter(item => item._id !== productData._id);
+                props.setProducts(currentProducts.length === 0? null: currentProducts);
+                // toast.success("Product removed from the cart");
+                props.showToast(true);
+                console.log(currentProducts);        
+            }
+            getProducts();
+        })
+          // console.log(data);
 
-    const handleDelete = () => {
+    }
+
+    const handleDeleteFromCart = () => {
         fetch(`https://electro-tech-backend.vercel.app/deleteProduct`, {
             method: 'DELETE',
             headers: {'Content-Type': 'application/json'},
@@ -26,6 +51,8 @@ const ProductCard = (props) => {
                 const oldCartItems = props.cartItems;
                 const newCartItems = oldCartItems.filter(item => item._id !== productData._id);
                 props.setcartItems(newCartItems.length === 0? null: newCartItems);
+                // toast.success("Product removed from the cart");
+                props.showToast(true);
                 console.log(newCartItems);        
             }
             getProducts();
@@ -52,10 +79,14 @@ const ProductCard = (props) => {
                     onClick={() => navigate(`/update-product/${productData._id}`, { state: productData })}
                     >Update</button>}
                     {props.method === "delete" && <button className="primaryBtn bg-red-900 border-red-900 hover:bg-red-700 hover:border-red-700 px-0 text-sm py-2 w-full" 
-                    onClick={handleDelete}
+                    onClick={handleDeleteFromCart}
+                    >Delete</button>}
+                    {props.deleteFromProducts && <button className="primaryBtn bg-red-900 border-red-900 hover:bg-red-700 hover:border-red-700 px-0 text-sm py-2 w-full" 
+                    onClick={handleDeleteProduct}
                     >Delete</button>}
                 </div>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

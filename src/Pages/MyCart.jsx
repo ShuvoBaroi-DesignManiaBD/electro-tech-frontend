@@ -4,10 +4,12 @@ import { useAuth } from "../Hooks/useAuth";
 import ProductCard from "../Components/Cards/ProductCard";
 import { getCartItems } from "../Hooks/useData";
 import { Spinner } from "@material-tailwind/react";
+import { ToastContainer, toast } from "react-toastify";
 
 const MyCart = () => {
     const { user } = useAuth();
     const [cartItems, setcartItems] = useState([]);
+    const [showToast, setShowToast] = useState(false);
     console.log(user.uid);
 
     useEffect(() => {
@@ -18,6 +20,7 @@ const MyCart = () => {
         }
         getProducts();
     }, [user.uid]);
+    {showToast? toast.success("Product removed from the cart"):''}
     console.log(cartItems);
     return (
         <>
@@ -39,6 +42,7 @@ const MyCart = () => {
                                     setcartItems={setcartItems}
                                     productData={product}
                                     method={"delete"}
+                                    showToast={setShowToast}
                                 ></ProductCard>
                             ))
                         )
@@ -50,6 +54,7 @@ const MyCart = () => {
 
                 </div>
             </section>
+            <ToastContainer></ToastContainer>
         </>
     );
 };

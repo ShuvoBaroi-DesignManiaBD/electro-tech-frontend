@@ -18,7 +18,7 @@ const Products = () => {
     return (
         <>
             <HeroInnerPages>
-                My cart
+                All products
             </HeroInnerPages>
             <section className='container mx-auto pt-20 lg:pt-[120px] pb-20 text-center'>
                 <h2 className='primaryHeading'>Products</h2>
@@ -32,14 +32,13 @@ const Products = () => {
                                 <ProductCard
                                     key={product._id}
                                     products={products}
-                    
                                     productData={product}
                                 ></ProductCard>
                             ))
                         )
                     ) : (
                         <p className='text-center textLg font-normal text-textColor col-span-4'>
-                            Your cart is empty!
+                            Oops! There is no product.
                         </p>
                     )}
 
