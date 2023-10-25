@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <>
             {/* Hero section */}
-            <section className="flex items-center md:py-5 bg-[url('https://i.ibb.co/M5h90r4/hero-bg.webp')] bg-cover h-[650px] bg-center">
+            <section className="flex items-center md:py-5 bg-[url('https://i.ibb.co/M5h90r4/hero-bg.webp')] bg-cover lg:h-[650px] bg-center">
                 <div className="container flex flex-col-reverse md:flex-row md:items-center px-4 py-12 mx-auto gap-8 xl:gap-0">
                     <div className="w-full md:w-1/2 flex flex-col gap-5 justify-center text-center md:text-left items-center md:items-start lg:col-span-7" data-aos="fade-in" data-aos-duration="5000">
                         <h1 className="primaryHeading text-3xl lg:text-6xl font-extrabold leading-auto lg:leading-[70px]">

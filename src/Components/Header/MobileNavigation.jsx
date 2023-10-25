@@ -29,7 +29,7 @@ const MobileNavigation = () => {
             <NavLink to="/my-cart" className={activeStatus}>
                 My cart
             </NavLink>
-            <NavLink to="/add-product" className="primaryBtn text text-white font-medium p-2 px-4 flex items-center gap-3" onClick={logout}>
+            <NavLink to="/add-product" className="primaryBtn text text-white font-medium p-2 px-4 flex items-center gap-3" >
                 Add product <FaPlus></FaPlus>
             </NavLink>
             {user ?

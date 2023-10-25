@@ -24,7 +24,7 @@ const MyCart = () => {
             <HeroInnerPages>
                 My cart
             </HeroInnerPages>
-            <section className='container mx-auto pt-[120px] pb-20 text-center'>
+            <section className='container mx-auto pt-20 lg:pt-[120px] pb-20 text-center'>
                 <h2 className='primaryHeading'>Products</h2>
                 <div className='gap-10 grid md:grid-cols-2 lg:grid-cols-4 px-4 lg:px-0 py-10'>
                     {/* {currentBrand.products.map(product => <ProductCard key={Date.now()+Math.random()} productData={product}></ProductCard>)} */}

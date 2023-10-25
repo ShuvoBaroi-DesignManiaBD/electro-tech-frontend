@@ -24,7 +24,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <hr className="my-3 sm:mx-auto md:my-4" />
-                <span className="block text-sm text-headingColor sm:text-center">
+                <span className="block text-sm text-headingColor text-center">
                     {currentYear}{" - "} Electro Tech. All Rights Reserved.
                 </span>
             </div>
